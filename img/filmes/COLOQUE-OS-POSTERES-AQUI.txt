@@ -1,0 +1,12 @@
+Coloque aqui os pôsteres dos filmes, em .jpg, com estes nomes exatos:
+
+ex-machina.jpg
+matrix.jpg
+eu-robo.jpg
+transcendence.jpg
+mitchells.jpg
+homem-bicentenario.jpg
+
+O site encontra os arquivos sozinho. Se algum estiver faltando,
+o card daquele filme mostra a ilustração no lugar.
+Formato vertical (como um pôster) fica melhor; o site corta o excesso.

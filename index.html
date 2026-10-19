@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>InovaAI · EDUTEC</title>
+<meta name="description" content="InovaAI: projeto EDUTEC 2026 sobre inteligência artificial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="reading-bar" id="readbar" hidden></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="InovaAI, página inicial">
+      <img class="logo-l" src="img/logo-light.webp" alt="InovaAI" width="157" height="55">
+      <img class="logo-d" src="img/logo-dark.webp" alt="InovaAI" width="176" height="62">
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#inicio" data-nav="inicio">Início</a>
+      <a href="#ia" data-nav="ia">O que é IA?</a>
+      <a href="#ensine" data-nav="ensine">Ensine a IA</a>
+      <a href="#aplicacoes" data-nav="aplicacoes">Aplicações</a>
+      <a href="#jogo" data-nav="jogo">Jogo</a>
+      <a href="#filmes" data-nav="filmes">Filmes</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" hidden><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+
+<!-- ================= INÍCIO ================= -->
+<div class="page" data-page="inicio">
+  <section class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-art"><img src="img/hero.webp" alt="Dois estudantes usando um notebook com o símbolo de IA na tela, cercados por ícones de aprender, explorar e criar" width="635" height="419"></div>
+      <div>
+        <button type="button" class="prompt-chip" id="heroAsk" title="Perguntar para a Nova"><b>IA</b><span id="typed">o que é aprendizado de máquina?</span><span class="caret"></span></button>
+        <h1>Entenda inteligência artificial de forma <span class="hl">simples e prática.</span></h1>
+        <p class="lead">Quatro assuntos, um laboratório interativo em cada um e uma corrida para testar o que você aprendeu.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#ia">Comece agora
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#jogo" id="heroSecondary">Jogar Inova Runner</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-title wrap">Explore o universo da <span class="hl-blue">IA</span></h2>
+
+  <section class="band band-purple">
+    <div class="wrap">
+      <div class="band-art"><img src="img/web.webp" alt="Ilustração de um navegador com um globo ao fundo" width="375" height="325"></div>
+      <div>
+        <span class="mono">Sobre o projeto</span>
+        <h3>Um site feito por estudantes de TI</h3>
+        <p>Em nosso site, buscamos abranger um tema muito debatido nos dias atuais e que é de suma importância para o presente e o futuro. Como parte das disciplinas do curso técnico em TI, escolhemos a inteligência artificial. Com este projeto, queremos informar sobre o assunto, debater o tema e discutir seu impacto na sociedade em que vivemos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-light flip">
+    <div class="wrap">
+      <div class="band-art"><img src="img/eye.webp" alt="Ilustração de um olho digital cercado por imagens e circuitos" width="467" height="408"></div>
+      <div>
+        <span class="mono hl">Visão computacional</span>
+        <h3>Máquinas que enxergam</h3>
+        <p>A visão computacional é uma tecnologia em constante evolução, usada em diversos setores, incluindo indústria, saúde e agricultura. Ela permite que as máquinas “vejam” e interpretem informações visuais, fornecendo dados precisos para melhorar a tomada de decisão.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-dark">
+    <div class="wrap">
+      <div class="band-art"><img src="img/brainchip.webp" alt="Ilustração de um cérebro ligado a um chip com as letras IA" width="475" height="388"></div>
+      <div>
+        <span class="mono">IA no dia a dia</span>
+        <h3>Da ficção para o bolso</h3>
+        <p>Cada vez mais a inteligência artificial vem se tornando algo necessário no nosso dia a dia. Embora o primeiro esboço de uma IA exista desde 1950, o desenvolvimento tecnológico recente fez com que essa tecnologia, que só parecia possível na ficção, se tornasse comum e de fácil acesso para todos. Mas, assim como na ficção, nos tornamos dependentes dela rapidamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="trail wrap" aria-labelledby="trailTitle">
+    <div class="trail-head">
+      <div>
+        <h2 id="trailTitle">Sua trilha de aprendizagem</h2>
+        <p>Siga na ordem ou pule para o assunto que mais te interessa.</p>
+      </div>
+      <div class="meter"><span id="meterTxt">0 de 4 assuntos concluídos</span><div class="bar"><i id="meterBar"></i></div></div>
+    </div>
+    <div class="topics" id="homeTopics"></div>
+    <a class="tm-cta" href="#ensine"><div><span class="mono" style="opacity:.75">Laboratório</span><h3>Ensine a máquina</h3><p>Desenhe formas, treine um modelo de machine learning e veja ele aprender na hora.</p></div><span class="btn btn-white">Experimentar →</span></a>
+  </section>
+
+  <section class="team" aria-labelledby="teamTitle">
+    <div class="wrap">
+      <h2 id="teamTitle">Grupo <span class="hl-blue">EDUTEC</span> 2026</h2>
+      <p class="sub">Quem criou este site.</p>
+        <div class="team-grid">
+          <div class="member"><img src="img/p-leonardo.webp" alt="Foto de Leonardo Bizo" width="200" height="200"><strong>Leonardo Bizo</strong></div>
+          <div class="member"><img src="img/p-nickolas.webp" alt="Foto de Nickolas Zilig" width="200" height="200"><strong>Nickolas Zilig</strong></div>
+          <div class="member"><img src="img/p-sofia.webp" alt="Foto de Sofia Porto" width="199" height="200"><strong>Sofia Porto</strong></div>
+          <div class="member"><img src="img/p-yago.webp" alt="Foto de Yago Santos" width="200" height="200"><strong>Yago Santos</strong></div>
+        </div>
+    </div>
+    <div class="footer"><div class="foot-inner"><small>© 2026 InovaAI • Projeto EDUTEC</small></div></div>
+  </section>
+</div>
+
+<!-- ================= O QUE É IA ================= -->
+<div class="page" data-page="ia" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <span class="mono hl">Trilha · 4 assuntos</span>
+      <h1>Escolha por onde começar</h1>
+      <p>Aprenda os fundamentos e avance pelos assuntos no seu ritmo. Cada um tem um laboratório interativo e uma videoaula para continuar estudando.</p>
+    </div>
+    <div class="path" id="pathList"></div>
+  </div>
+</div>
+
+<!-- ================= ARTIGOS ================= -->
+<div class="page" data-page="article" hidden>
+  <div class="wrap">
+    <div class="article-top">
+      <a class="back" href="#ia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Todos os assuntos</a>
+      <span class="mono" id="artStep" style="color:var(--ink-soft)"></span>
+    </div>
+    <div class="article">
+      <nav class="toc" id="toc" aria-label="Nesta página"></nav>
+      <article id="artBody"></article>
+    </div>
+  </div>
+  <footer class="foot-plain"><div class="foot-inner"><small>© 2026 InovaAI • Projeto EDUTEC</small></div></footer>
+</div>
+
+<!-- ================= ENSINE A IA ================= -->
+<div class="page" data-page="ensine" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <span class="mono hl">Laboratório · machine learning na prática</span>
+      <h1>Ensine a máquina</h1>
+      <p>Desenhe uma forma e veja o palpite da máquina. Se ela errar, ensine a resposta certa: cada desenho vira um exemplo de treino, e o modelo melhora na hora. É assim que o machine learning funciona: <b>dados entram, padrões saem</b>.</p>
+    </div>
+
+    <ol class="tm-steps" aria-label="Como usar">
+      <li><span><b>Desenhe</b> uma das formas no quadro.</span></li>
+      <li><span><b>Veja o palpite</b> e quanta certeza a máquina tem.</span></li>
+      <li><span><b>Ensine</b>: clique na forma certa para guardar o desenho como exemplo.</span></li>
+    </ol>
+
+    <div class="tm-grid">
+      <section class="tm-card tm-draw" aria-labelledby="tmDrawT">
+        <div class="tm-card-head"><h2 id="tmDrawT">Quadro de desenho</h2><button type="button" class="tm-link" id="tmClear">Apagar desenho</button></div>
+        <div class="tm-pad-wrap">
+          <canvas id="tmPad" width="320" height="320" aria-label="Quadro para desenhar com o mouse ou o dedo"></canvas>
+          <p class="tm-pad-hint" id="tmHint">Desenhe aqui com o mouse ou o dedo</p>
+        </div>
+        <div class="tm-see">
+          <canvas id="tmPixels" width="16" height="16" aria-hidden="true"></canvas>
+          <p><b>Como a máquina vê:</b> o desenho é recortado, centralizado e reduzido a <b>16 × 16 = 256 pixels</b>. Cada pixel vira um número de 0 a 1. A máquina só enxerga essa lista de números.</p>
+        </div>
+      </section>
+
+      <section class="tm-card tm-guess" aria-labelledby="tmGuessT" aria-live="polite">
+        <div class="tm-card-head"><h2 id="tmGuessT">Palpite da máquina</h2><span class="mono" id="tmScore"></span></div>
+        <div id="tmResult" class="tm-result"><p class="tm-empty">Desenhe algo para a máquina tentar adivinhar.</p></div>
+        <div class="tm-teach">
+          <p id="tmTeachLabel">Ensine: este desenho é um…</p>
+          <div class="tm-teach-btns" id="tmTeachBtns"></div>
+        </div>
+        <div class="tm-why" id="tmWhy" hidden>
+          <p><b>Por que esse palpite?</b> Estes são os exemplos de treino mais parecidos com o seu desenho:</p>
+          <div class="tm-nn" id="tmNN"></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="tm-card tm-data" aria-labelledby="tmDataT">
+      <div class="tm-card-head">
+        <h2 id="tmDataT">Dados de treino <span class="tm-count" id="tmTotal"></span></h2>
+        <div class="tm-actions">
+          <button type="button" class="tm-link" id="tmAddClass">+ Nova categoria</button>
+          <button type="button" class="tm-link" id="tmSamples">Recarregar exemplos prontos</button>
+          <button type="button" class="tm-link tm-danger" id="tmReset">Apagar todos os dados</button>
+        </div>
+      </div>
+      <p class="tm-sub">Os exemplos marcados com <span class="tm-auto-dot"></span> foram gerados automaticamente para a máquina já começar sabendo alguma coisa. Renomeie as categorias para ensinar o que quiser: letras, números, emojis desenhados…</p>
+      <div class="tm-classes" id="tmClasses"></div>
+    </section>
+
+    <div class="tm-grid tm-grid-b">
+      <section class="tm-card" aria-labelledby="tmEvalT">
+        <div class="tm-card-head"><h2 id="tmEvalT">Avaliar o modelo</h2><button type="button" class="btn btn-primary tm-sm" id="tmEval">Testar com os dados</button></div>
+        <p class="tm-sub">A máquina tenta adivinhar cada exemplo de treino usando <b>só os outros</b> (validação “deixe um de fora”). Assim medimos se ela aprendeu de verdade ou só decorou.</p>
+        <div id="tmEvalOut"></div>
+      </section>
+
+      <section class="tm-card" aria-labelledby="tmHowT">
+        <h2 id="tmHowT">Como ela pensa</h2>
+        <p class="tm-sub">Este modelo usa o algoritmo <b>k vizinhos mais próximos</b> (k-NN), um dos mais simples do machine learning:</p>
+        <ol class="tm-how">
+          <li>Transforma o desenho em 256 números.</li>
+          <li>Mede a distância entre esses números e os de cada exemplo de treino.</li>
+          <li>Pega os <b>5 exemplos mais próximos</b> e faz uma votação: os mais parecidos têm voto mais forte.</li>
+        </ol>
+        <p class="tm-sub">Não existe regra escrita à mão dizendo o que é um triângulo. Tudo vem dos exemplos.</p>
+      </section>
+    </div>
+
+    <section class="tm-card tm-exp" aria-labelledby="tmExpT">
+      <h2 id="tmExpT">Experimentos para fazer na sala</h2>
+      <div class="tm-exp-grid">
+        <div><span class="mono hl">Viés nos dados</span><h3>A máquina só conhece o que viu</h3><p>Apague os dados e ensine triângulos sempre <b>apontando para cima</b>. Depois desenhe um de cabeça para baixo. Ela erra? É o mesmo problema de uma IA treinada com dados que não representam todo mundo.</p></div>
+        <div><span class="mono hl">Quantidade de dados</span><h3>Mais exemplos, mais acerto?</h3><p>Avalie o modelo com 2 exemplos por categoria e depois com 10. Compare as porcentagens. É por isso que empresas coletam tantos dados.</p></div>
+        <div><span class="mono hl">Dados errados</span><h3>Ensine errado de propósito</h3><p>Marque alguns círculos como “Quadrado” e veja os palpites piorarem. Uma IA é tão boa quanto os dados que recebe.</p></div>
+      </div>
+    </section>
+  </div>
+  <footer class="foot-plain"><div class="foot-inner"><small>© 2026 InovaAI • Projeto EDUTEC</small></div></footer>
+</div>
+
+<!-- ================= APLICAÇÕES ================= -->
+<div class="page" data-page="aplicacoes" hidden>
+  <div class="wrap page-head" style="text-align:center">
+    <h1 class="hl">Aplicações da Inteligência Artificial</h1>
+    <p style="margin-inline:auto">Veja como a IA participa da saúde, da indústria, do transporte e da educação.</p>
+  </div>
+  <nav class="areas-nav wrap" aria-label="Áreas">
+    <a href="#aplicacoes" data-jump="saude">Saúde</a>
+    <a href="#aplicacoes" data-jump="industria">Indústria</a>
+    <a href="#aplicacoes" data-jump="transporte">Transporte</a>
+    <a href="#aplicacoes" data-jump="educacao">Educação</a>
+  </nav>
+  <section class="area area-a" id="saude">
+    <div class="wrap">
+      <div>
+        <h2>Na saúde</h2>
+        <p>A inteligência artificial tem contribuído significativamente para a área da saúde ao tornar diagnósticos mais rápidos e precisos, reduzir custos e melhorar o atendimento, apesar de ainda enfrentar desafios. Segundo a Organização Mundial da Saúde, a IA pode aprimorar os serviços de saúde ao apoiar decisões clínicas, pesquisas e ações de saúde pública. A médica Rosália Morais Torres, da Universidade Federal de Minas Gerais, destaca seu papel no combate a doenças tropicais, auxiliando no diagnóstico, na detecção de surtos e na formulação de estratégias de prevenção mais eficazes.</p>
+        <div class="facts"><span>Diagnóstico</span><span>Detecção de surtos</span><span>Decisões clínicas</span></div>
+      </div>
+      <div class="area-art"><img src="img/a-saude.webp" alt="Coração com linha de batimentos e estetoscópio" width="425" height="398"></div>
+    </div>
+  </section>
+  <section class="area area-b flip" id="industria">
+    <div class="wrap">
+      <div>
+        <h2>Na indústria</h2>
+        <p>O uso da inteligência artificial na indústria tem tornado os processos mais eficientes e precisos. A automação com robôs aumenta a produtividade e reduz erros, enquanto a manutenção preditiva evita falhas e diminui custos. Além disso, a IA otimiza a logística e a cadeia de suprimentos, melhora os processos produtivos, impulsiona a inovação no desenvolvimento de novos produtos e contribui para um atendimento ao cliente mais ágil, fortalecendo a competitividade das empresas.</p>
+        <div class="facts"><span>Automação</span><span>Manutenção preditiva</span><span>Logística</span></div>
+      </div>
+      <div class="area-art"><img src="img/a-industria.webp" alt="Fábrica com braço robótico e esteira" width="482" height="388"></div>
+    </div>
+  </section>
+  <section class="area area-c" id="transporte">
+    <div class="wrap">
+      <div>
+        <h2>No transporte</h2>
+        <p>A inteligência artificial tem transformado o setor automotivo ao possibilitar veículos autônomos capazes de processar dados de sensores, câmeras e GPS para reconhecer objetos, prever movimentos e tomar decisões rápidas, aumentando a segurança. Embora ainda restrita, essa tecnologia já opera em algumas cidades dos Estados Unidos por meio da Waymo, empresa do grupo do Google. Além da direção autônoma, a IA é usada no design automotivo, no suporte ao motorista com sistemas de prevenção de acidentes e em assistentes virtuais que personalizam a experiência dentro do veículo.</p>
+        <div class="facts"><span>Veículos autônomos</span><span>Sensores e GPS</span><span>Prevenção de acidentes</span></div>
+      </div>
+      <div class="area-art"><img src="img/a-transporte.webp" alt="Ônibus em uma estrada com marcador de localização" width="440" height="353"></div>
+    </div>
+  </section>
+  <section class="area area-d flip" id="educacao">
+    <div class="wrap">
+      <div>
+        <h2>Na educação</h2>
+        <p>A inteligência artificial tem contribuído para a educação ao possibilitar um ensino mais personalizado, adaptado ao ritmo e às necessidades de cada estudante, conforme destaca João Fernando Costa Júnior. Plataformas adaptativas, como o Aprimora, usam IA para ajustar conteúdos, apoiar alunos com dificuldades e auxiliar professores. Além disso, ferramentas como o ChatGPT facilitam pesquisas, ampliam o acesso ao conhecimento e tornam o aprendizado mais acessível, embora exijam uso crítico e consciente.</p>
+        <div class="facts"><span>Ensino personalizado</span><span>Plataformas adaptativas</span><span>Uso crítico</span></div>
+      </div>
+      <div class="area-art"><img src="img/a-educacao.webp" alt="Capelo de formatura sobre livros" width="465" height="489"></div>
+    </div>
+    <div class="foot-inner" style="margin-top:60px"><small>© 2026 InovaAI • Projeto EDUTEC</small></div>
+  </section>
+</div>
+
+<!-- ================= JOGO ================= -->
+<div class="page" data-page="jogo" hidden>
+  <div class="wrap">
+    <div class="page-head game-head">
+      <div>
+        <span class="mono hl">Jogos</span>
+        <h1>Hora de jogar</h1>
+        <p>Corra com o BIN ou o Marcio, desvie dos obstáculos e responda perguntas sobre IA. Ou teste se você reconhece a IA no dia a dia.</p>
+      </div>
+      <div class="game-tabs" role="tablist" aria-label="Escolha o jogo">
+        <button type="button" role="tab" id="tabRunner" aria-selected="true" aria-controls="panelRunner">Inova Runner</button>
+        <button type="button" role="tab" id="tabQuiz" aria-selected="false" aria-controls="panelQuiz">É IA ou não é?</button>
+      </div>
+    </div>
+
+    <section id="panelRunner" role="tabpanel" aria-labelledby="tabRunner" class="runner">
+      <!-- Menu: escolha do personagem -->
+      <div class="rn-screen rn-menu" id="rnMenu">
+        <div class="rn-intro">
+          <span class="mono hl">Inova Runner · 600 metros</span>
+          <h2>Com quem você vai?</h2>
+          <p>Desvie dos obstáculos e colete bits de dados. Bateu? Responda uma pergunta sobre IA para continuar. Você tem <b>3 vidas</b>: cada resposta errada custa uma.</p>
+          <div class="rn-topics"><span>Machine learning</span><span>Deep learning</span><span>Redes neurais</span><span>Visão computacional</span><span>IA no dia a dia</span></div>
+          <div class="rn-keys" aria-label="Controles">
+            <span><kbd>↑</kbd> Pular</span><span><kbd>↓</kbd> Agachar</span><span><kbd>←</kbd> Recuar</span><span><kbd>→</kbd> Acelerar</span><span><kbd>Esc</kbd> Pausar</span>
+          </div>
+          <p class="rn-touch-hint">No celular: toque na pista para pular, deslize para baixo para agachar.</p>
+          <p class="rn-best" id="rnBest"></p>
+        </div>
+        <div class="rn-chars">
+          <button type="button" class="rn-char" data-char="bin" aria-label="Jogar com BIN">
+            <span class="rn-portrait"><img src="img/run-bin.webp" alt="" class="rn-sheet"></span>
+            <span class="rn-char-foot"><strong>BIN</strong><span>Jogar</span></span>
+          </button>
+          <button type="button" class="rn-char" data-char="marcio" aria-label="Jogar com Marcio">
+            <span class="rn-portrait"><img src="img/run-marcio.webp" alt="" class="rn-sheet"></span>
+            <span class="rn-char-foot"><strong>Marcio</strong><span>Jogar</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Corrida -->
+      <div class="rn-screen rn-game" id="rnGame" hidden>
+        <div class="rn-hud">
+          <div class="rn-stat"><small>Distância</small><strong id="rnDist">0 / 600 m</strong></div>
+          <div class="rn-progress" role="progressbar" aria-label="Progresso da corrida" aria-valuemin="0" aria-valuemax="600" aria-valuenow="0"><i id="rnFill"></i><span id="rnRunnerDot"></span></div>
+          <div class="rn-stat"><small>Vidas</small><strong id="rnLives" aria-label="3 vidas">♥♥♥</strong></div>
+          <div class="rn-stat"><small>Acertos</small><strong id="rnScore">0</strong></div>
+          <div class="rn-stat"><small>Bits</small><strong id="rnBits">0</strong></div>
+          <button type="button" class="icon-btn" id="rnPause" aria-label="Pausar"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+        </div>
+        <div class="rn-arena" id="rnArena">
+          <canvas id="rnCanvas" width="1100" height="520" role="img" aria-label="Corrida 2D. Use as setas para pular, agachar e acelerar."></canvas>
+          <p class="rn-toast" id="rnToast" aria-live="polite"></p>
+
+          <!-- Pergunta após colisão -->
+          <div class="rn-overlay" id="rnQuiz" hidden role="dialog" aria-modal="true" aria-labelledby="rnQ">
+            <div class="rn-card">
+              <span class="mono hl" id="rnCat">Machine learning</span>
+              <p class="rn-lead">Bateu! Responda para continuar.</p>
+              <h3 id="rnQ"></h3>
+              <div class="rn-answers" id="rnAnswers"></div>
+              <p class="rn-feedback" id="rnFeedback" role="status"></p>
+              <button type="button" class="btn btn-primary" id="rnContinue" hidden>Continuar corrida</button>
+            </div>
+          </div>
+
+          <!-- Pausa -->
+          <div class="rn-overlay" id="rnPaused" hidden role="dialog" aria-modal="true" aria-labelledby="rnPausedT">
+            <div class="rn-card rn-center">
+              <h3 id="rnPausedT">Jogo pausado</h3>
+              <p>Continue quando quiser.</p>
+              <div class="rn-actions"><button type="button" class="btn btn-primary" id="rnResume">Continuar</button><button type="button" class="btn btn-ghost" id="rnQuit">Voltar ao início</button></div>
+            </div>
+          </div>
+
+          <!-- Resultado -->
+          <div class="rn-overlay" id="rnResult" hidden role="dialog" aria-modal="true" aria-labelledby="rnResT">
+            <canvas id="rnConfetti" aria-hidden="true"></canvas>
+            <div class="rn-card rn-center">
+              <span class="rn-symbol" id="rnSymbol">★</span>
+              <span class="mono hl" id="rnEyebrow">Percurso concluído</span>
+              <h3 id="rnResT">Parabéns!</h3>
+              <div class="rn-final" id="rnFinal"></div>
+              <p id="rnResDetail"></p>
+              <div class="rn-actions"><button type="button" class="btn btn-primary" id="rnRetry">Jogar novamente</button><button type="button" class="btn btn-ghost" id="rnHome">Trocar personagem</button></div>
+              <details class="rn-review" id="rnReview" hidden><summary>Revisar as perguntas que você errou</summary><div id="rnReviewList"></div></details>
+            </div>
+          </div>
+        </div>
+        <div class="rn-touch" aria-label="Controles de toque">
+          <button type="button" data-ctl="ArrowLeft" aria-label="Recuar">←</button>
+          <button type="button" data-ctl="ArrowDown">↓ Agachar</button>
+          <button type="button" data-ctl="ArrowUp">↑ Pular</button>
+          <button type="button" data-ctl="ArrowRight">→ Acelerar</button>
+        </div>
+        <p class="rn-legend"><span><i class="lg-data"></i>Pule blocos de dados e chips</span><span><i class="lg-scan"></i>Agache sob os scanners</span><span><i class="lg-bit"></i>Colete bits: +10 pontos</span></p>
+      </div>
+      <p class="rn-credit">Inova Runner foi criado pelo grupo EDUTEC e adaptado para o site.</p>
+    </section>
+
+    <section id="panelQuiz" role="tabpanel" aria-labelledby="tabQuiz" hidden>
+      <div class="page-head" style="text-align:center;padding-top:8px">
+        <span class="mono hl">10 situações</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">É IA ou não é?</h2>
+        <p style="margin-inline:auto">Nem tudo que é automático usa inteligência artificial. Leia cada situação e decida. Dica: IA aprende padrões a partir de dados; uma regra fixa não aprende nada.</p>
+      </div>
+      <div class="game">
+        <div class="game-card" id="game" aria-live="polite"></div>
+      </div>
+    </section>
+  </div>
+  <footer class="foot-plain" style="margin-top:0"><div class="foot-inner"><small>© 2026 InovaAI • Projeto EDUTEC</small></div></footer>
+</div>
+
+<!-- ================= FILMES ================= -->
+<div class="page" data-page="filmes" hidden>
+  <div class="wrap">
+    <div class="page-head">
+      <span class="mono hl">Sessão pipoca</span>
+      <h1>A IA no cinema</h1>
+      <p>Seis filmes que imaginaram máquinas inteligentes. Para cada um, uma pergunta para debater em sala e uma régua de quanto a história está perto da IA que existe hoje.</p>
+    </div>
+    <div class="films" id="films"></div>
+  </div>
+  <footer class="foot-plain" style="margin-top:0"><div class="foot-inner"><small>© 2026 InovaAI • Projeto EDUTEC</small></div></footer>
+</div>
+
+</main>
+
+
+<button type="button" class="nova-fab" id="novaFab" aria-expanded="false" aria-controls="nova"><span class="orb" aria-hidden="true"></span><span>Pergunte à Nova</span></button>
+<section class="nova" id="nova" role="dialog" aria-label="Chat com a Nova" hidden>
+  <div class="nova-head"><span class="orb" aria-hidden="true"></span><div><b>Nova</b><small>Funciona offline</small></div>
+    <button type="button" class="why-tog" id="novaWhy" aria-pressed="false" title="Mostrar como a Nova escolhe cada resposta">Ver como pensei</button>
+    <button type="button" class="x" id="novaClose" aria-label="Fechar chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="nova-log" id="novaLog" aria-live="polite"></div>
+  <div class="nova-sugs" id="novaSugs"></div>
+  <form class="nova-form" id="novaForm">
+    <textarea id="novaInput" aria-label="Sua pergunta" rows="1" placeholder="Pergunte sobre IA..." maxlength="1200"></textarea>
+    <button type="submit" id="novaSend" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5 21 12 3 3.5 3 10l12 2-12 2z"/></svg></button></form>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
