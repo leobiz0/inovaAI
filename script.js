@@ -1002,7 +1002,11 @@ var Runner=(function(){
     ctx.save();ctx.fillStyle="rgba(0,0,0,.28)";ctx.beginPath();ctx.ellipse(player.x,g+2,37,7,0,0,Math.PI*2);ctx.fill();
     if(invul>0){ctx.strokeStyle=C.cyan;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(player.x,g+player.y-(sl?40:67),sl?70:57,sl?50:82,0,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=.68+.32*Math.pow(Math.sin(elapsed*22),2)}
     var h=sl?92:143,w=fr.width/fr.height*h,y=sl?g-h+6:g+player.y-h+5;
-    if(sl){ctx.strokeStyle="rgba(255,255,255,.5)";ctx.lineWidth=2;for(var k=0;k<3;k++){var ly=g-14-k*16;ctx.beginPath();ctx.moveTo(player.x-w/2-8-k*6,ly);ctx.lineTo(player.x-w/2-34-k*10,ly);ctx.stroke()}}
+    if(sl){ctx.strokeStyle="rgba(255,255,255,.5)";ctx.lineWidth=2;for(var k=0;k<3;k++){var ly=g-14-k*16;ctx.beginPath();ctx.moveTo(player.x-w/2-8-k*6,ly);ctx.lineTo(player.x-w/2-34-k*10,ly);ctx.stroke()}
+      /* rolamento: duas voltas para a frente, encolhendo no meio e sempre apoiado no chão */
+      if(!reduce){var p=1-player.slide/CFG.slideDuration,e=p<.5?2*p*p:1-2*(1-p)*(1-p),a=e*Math.PI*4,sc=1-.32*Math.sin(Math.PI*p),
+        rw=w*sc/2,rh=h*sc/2,cy=g+6-(Math.abs(rw*Math.sin(a))+Math.abs(rh*Math.cos(a)));
+        ctx.translate(player.x,cy);ctx.rotate(a);ctx.drawImage(fr,-rw,-rh,rw*2,rh*2);ctx.restore();return}}
     ctx.drawImage(fr,player.x-w/2,y,w,h);ctx.restore()}
   function draw(){
     if(!ready||$id("rnGame").hidden)return;
