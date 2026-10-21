@@ -312,12 +312,12 @@
         <div class="rn-intro">
           <span class="mono hl">Inova Runner · 600 metros</span>
           <h2>Com quem você vai?</h2>
-          <p>Desvie dos obstáculos e colete bits de dados. Bateu? Responda uma pergunta sobre IA para continuar. Você tem <b>3 vidas</b>: cada resposta errada custa uma.</p>
+          <p>A corrida acelera a cada 100 metros. Pule firewalls e bugs, passe por baixo dos scanners, cuidado com os drones que sobem e descem. Desvios seguidos multiplicam os pontos dos bits. Bateu? Responda uma pergunta sobre IA: cada erro custa uma das <b>3 vidas</b>.</p>
           <div class="rn-topics"><span>Machine learning</span><span>Deep learning</span><span>Redes neurais</span><span>Visão computacional</span><span>IA no dia a dia</span></div>
           <div class="rn-keys" aria-label="Controles">
-            <span><kbd>↑</kbd> Pular</span><span><kbd>↓</kbd> Agachar</span><span><kbd>←</kbd> Recuar</span><span><kbd>→</kbd> Acelerar</span><span><kbd>Esc</kbd> Pausar</span>
+            <span><kbd>↑</kbd> Pular (segure para ir mais alto)</span><span><kbd>↓</kbd> Rolar · no ar, mergulhar</span><span><kbd>←</kbd> Recuar</span><span><kbd>→</kbd> Acelerar</span><span><kbd>Esc</kbd> Pausar</span>
           </div>
-          <p class="rn-touch-hint">No celular: toque na pista para pular, deslize para baixo para agachar.</p>
+          <p class="rn-touch-hint">No celular: toque na pista para pular, deslize para baixo para rolar (ou mergulhar, se estiver no ar).</p>
           <p class="rn-best" id="rnBest"></p>
         </div>
         <div class="rn-chars">
@@ -338,12 +338,14 @@
           <div class="rn-stat"><small>Distância</small><strong id="rnDist">0 / 600 m</strong></div>
           <div class="rn-progress" role="progressbar" aria-label="Progresso da corrida" aria-valuemin="0" aria-valuemax="600" aria-valuenow="0"><i id="rnFill"></i><span id="rnRunnerDot"></span></div>
           <div class="rn-stat"><small>Vidas</small><strong id="rnLives" aria-label="3 vidas">♥♥♥</strong></div>
-          <div class="rn-stat"><small>Acertos</small><strong id="rnScore">0</strong></div>
+          <div class="rn-stat"><small>Pontos</small><strong id="rnScore">0</strong></div>
+          <div class="rn-stat rn-combo"><small>Combo</small><strong id="rnCombo">x1</strong></div>
           <div class="rn-stat"><small>Bits</small><strong id="rnBits">0</strong></div>
+          <button type="button" class="icon-btn rn-sound" id="rnSound" aria-label="Desligar som" aria-pressed="true"><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="m16 9 6 6M22 9l-6 6"/></svg></button>
           <button type="button" class="icon-btn" id="rnPause" aria-label="Pausar"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
         </div>
         <div class="rn-arena" id="rnArena">
-          <canvas id="rnCanvas" width="1100" height="520" role="img" aria-label="Corrida 2D. Use as setas para pular, agachar e acelerar."></canvas>
+          <canvas id="rnCanvas" width="1100" height="520" role="img" aria-label="Corrida 2D. Use as setas para pular, rolar e acelerar."></canvas>
           <p class="rn-toast" id="rnToast" aria-live="polite"></p>
 
           <!-- Pergunta após colisão -->
@@ -387,11 +389,11 @@
         </div>
         <div class="rn-touch" aria-label="Controles de toque">
           <button type="button" data-ctl="ArrowLeft" aria-label="Recuar">←</button>
-          <button type="button" data-ctl="ArrowDown">↓ Agachar</button>
+          <button type="button" data-ctl="ArrowDown">↓ Rolar</button>
           <button type="button" data-ctl="ArrowUp">↑ Pular</button>
           <button type="button" data-ctl="ArrowRight">→ Acelerar</button>
         </div>
-        <p class="rn-legend"><span><i class="lg-data"></i>Pule blocos de dados e chips</span><span><i class="lg-scan"></i>Agache sob os scanners</span><span><i class="lg-bit"></i>Colete bits: +10 pontos</span></p>
+        <p class="rn-legend"><span><i class="lg-data"></i>Pule dados, chips, firewalls e bugs</span><span><i class="lg-scan"></i>Role sob scanners · drones sobem e descem</span><span><i class="lg-bit"></i>Bits: 10 pontos × combo</span><span><i class="lg-pow"></i>Escudo e ímã ajudam</span></p>
       </div>
       <p class="rn-credit">Inova Runner foi criado pelo grupo EDUTEC e adaptado para o site.</p>
     </section>
