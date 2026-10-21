@@ -823,12 +823,25 @@ var Runner=(function(){
   }
   function home(){confetti.stop();keys={};state="menu";overlays(null);screen("menu");showBest();var b=document.querySelector('[data-char="'+chosen+'"]');b&&b.focus({preventScroll:true})}
 
+  /* recompensa de chegada: bolo de cenoura com cobertura de chocolate em pixel art (cada letra é um pixel) */
+  (function(){
+    var PX=["........G.G.......",".........G........","........OOO.......",".........O........",
+            "..kkkkkkkkkkkkkk..",".kWWWWWWWWWWWWWWk.",".kWWWWWWWWWWWWWWk.",".kWCWWCWWWWCWWCWk.",
+            ".kCCCDCCCCCCDCCCk.",".kCDCCCCDCCCCCDCk.",".kCCCCCCCDCCCCCCk.",".kCCCCDCCCCCDCCCk.",
+            ".kCDCCCCCDCCCCCDk.","PPPPPPPPPPPPPPPPPP",".pppppppppppppppp."];
+    var COL={G:"#4CAF50",O:"#F28C28",k:"#3A1E10",W:"#6B3A1F",C:"#F2A541",D:"#D9822B",P:"#D7DCF5",p:"#A9B2D6"};
+    var svg=$id("rnCake"),h="";svg.setAttribute("viewBox","0 0 18 "+PX.length);
+    PX.forEach(function(r,y){for(var x=0;x<r.length;x++)if(COL[r[x]])h+='<rect x="'+x+'" y="'+y+'" width="1" height="1" fill="'+COL[r[x]]+'"/>'});
+    svg.innerHTML=h;
+  })();
+
   function points(won){return Math.floor(distance)+correct*50+bits*10+(won?200:0)+(won?lives*100:0)}
   function finish(won){
     state=won?"won":"lost";keys={};
     var pts=points(won),b=best(),rec=!b||pts>b.pts;
     if(rec)store.set("inovaai-runner-best",{pts:pts,who:chosen,won:won});
     $id("rnSymbol").textContent=won?"★":"↻";
+    $id("rnReward").hidden=!won;
     $id("rnEyebrow").textContent=won?"Percurso concluído":"Fim de jogo";
     $id("rnResT").textContent=won?"Parabéns, "+NAMES[chosen]+"!":"Acabaram as vidas";
     $id("rnFinal").innerHTML='<div><small>Distância</small><strong>'+Math.floor(distance)+' m</strong></div><div><small>Acertos</small><strong>'+correct+'/'+asked+'</strong></div><div><small>Bits</small><strong>'+bits+'</strong></div><div class="pts"><small>Pontos</small><strong>'+pts+'</strong></div>';

@@ -467,6 +467,12 @@ kbd{display:inline-grid;place-items:center;min-width:26px;height:26px;padding:0 
 .rn-card #rnContinue{margin-top:14px;width:100%}
 .rn-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
 .rn-symbol{display:block;font-size:2.6rem;line-height:1;color:var(--purple-text)}
+.rn-reward{display:flex;align-items:center;gap:16px;margin-top:14px;padding:14px 16px;border-radius:16px;background:color-mix(in srgb,#F28C28 14%,var(--surface));border:2px dashed color-mix(in srgb,#F28C28 55%,var(--surface));text-align:left}
+.rn-reward svg{flex:0 0 auto;width:96px;height:auto;animation:rnCake 1.6s steps(2) infinite}
+.rn-reward p{margin:0;font-size:.92rem;color:var(--ink-soft)}
+.rn-reward b{display:block;color:var(--ink);font-family:var(--display);font-size:1.05rem;margin-bottom:2px}
+@keyframes rnCake{50%{transform:translateY(-3px)}}
+@media (max-width:520px){.rn-reward{flex-direction:column;text-align:center}.rn-reward svg{width:80px}}
 .rn-final{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
 .rn-final div{padding:10px 6px;border-radius:12px;background:var(--surface-2)}
 .rn-final small{display:block;font-size:.7rem;color:var(--ink-soft)}
