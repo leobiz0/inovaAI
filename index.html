@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="central-ia/central-ia.css">
 </head>
 <body>
 <div class="reading-bar" id="readbar" hidden></div>
@@ -297,11 +298,11 @@
       <div>
         <span class="mono hl">Jogos</span>
         <h1>Hora de jogar</h1>
-        <p>Corra com o BIN ou o Marcio, desvie dos obstáculos e responda perguntas sobre IA. Ou teste se você reconhece a IA no dia a dia.</p>
+        <p>Corra com o BIN ou o Marcio, desvie dos obstáculos e responda perguntas sobre IA. Ou entre na Central de Comando 3D e resolva incidentes causados pelo mau uso da IA.</p>
       </div>
       <div class="game-tabs" role="tablist" aria-label="Escolha o jogo">
         <button type="button" role="tab" id="tabRunner" aria-selected="true" aria-controls="panelRunner">Inova Runner</button>
-        <button type="button" role="tab" id="tabQuiz" aria-selected="false" aria-controls="panelQuiz">É IA ou não é?</button>
+        <button type="button" role="tab" id="tabCentral" aria-selected="false" aria-controls="panelCentral">Central de Comando</button>
       </div>
     </div>
 
@@ -391,15 +392,8 @@
       <p class="rn-credit">Inova Runner foi criado pelo grupo EDUTEC e adaptado para o site.</p>
     </section>
 
-    <section id="panelQuiz" role="tabpanel" aria-labelledby="tabQuiz" hidden>
-      <div class="page-head" style="text-align:center;padding-top:8px">
-        <span class="mono hl">10 situações</span>
-        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">É IA ou não é?</h2>
-        <p style="margin-inline:auto">Nem tudo que é automático usa inteligência artificial. Leia cada situação e decida. Dica: IA aprende padrões a partir de dados; uma regra fixa não aprende nada.</p>
-      </div>
-      <div class="game">
-        <div class="game-card" id="game" aria-live="polite"></div>
-      </div>
+    <section id="panelCentral" role="tabpanel" aria-labelledby="tabCentral" hidden>
+      <div id="jogoCentral"></div>
     </section>
   </div>
   <footer class="foot-plain" style="margin-top:0"><div class="foot-inner"><small>© 2026 InovaAI • Projeto EDUTEC</small></div></footer>
@@ -433,6 +427,8 @@
     <button type="submit" id="novaSend" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5 21 12 3 3.5 3 10l12 2-12 2z"/></svg></button></form>
 </section>
 
+<script src="central-ia/vendor/three.min.js"></script>
+<script src="central-ia/central-ia.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

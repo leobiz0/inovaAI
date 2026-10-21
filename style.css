@@ -291,33 +291,6 @@ button{font:inherit;color:inherit}
 .area-d{background:#6A4BCF;color:#fff;z-index:1;padding-top:140px}
 @media (max-width:860px){.area .wrap,.area.flip .wrap{grid-template-columns:1fr;gap:24px}.area.flip .area-art{order:0}.area-art img{max-width:260px}.area{padding-block:56px 90px}.area-b,.area-c,.area-d{padding-top:110px}}
 
-/* ---------- jogo ---------- */
-.game{max-width:760px;margin-inline:auto;padding-bottom:90px}
-.game-card{position:relative;padding:34px;border-radius:28px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
-.game-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;font-size:.9rem;color:var(--ink-soft)}
-.dots{display:flex;gap:6px;flex-wrap:wrap}
-.dots i{width:10px;height:10px;border-radius:50%;background:var(--surface-2)}
-.dots i.ok{background:var(--good)}.dots i.no{background:var(--bad)}.dots i.now{background:var(--purple)}
-.scenario{font-family:var(--display);font-size:clamp(1.3rem,2.8vw,1.75rem);font-weight:600;line-height:1.3;min-height:3.9em}
-.scenario-tag{display:inline-block;margin-bottom:12px}
-.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
-.ans{min-height:64px;border-radius:16px;border:2px solid var(--line);background:var(--surface);font-weight:600;font-size:1.02rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:border-color .2s,background .2s,transform .15s}
-.ans:hover:not(:disabled){border-color:var(--purple);transform:translateY(-2px)}
-.ans:disabled{cursor:default}
-.ans.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,var(--surface))}
-.ans.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
-.ans kbd{font-family:var(--mono);font-size:.72rem;padding:2px 6px;border-radius:6px;border:1px solid var(--line);color:var(--ink-soft)}
-.explain{margin-top:20px;padding:16px 18px;border-radius:14px;background:var(--surface-2);font-size:.95rem}
-.explain b{display:block;margin-bottom:4px}
-.game-foot{display:flex;justify-content:flex-end;margin-top:18px}
-.result{text-align:center}
-.result .big{font-family:var(--display);font-size:clamp(3rem,8vw,5rem);font-weight:800;color:var(--purple-text);line-height:1}
-.result h2{margin-top:10px;font-size:1.6rem}
-.result p{color:var(--ink-soft);margin-top:8px}
-.result .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
-.review{margin-top:28px;text-align:left;display:grid;gap:6px;font-size:.9rem}
-.review div{display:flex;gap:10px;padding:8px 12px;border-radius:10px;background:var(--surface-2)}
-@media (max-width:520px){.game-top{flex-wrap:wrap}.game-top .dots{order:3;width:100%}.answers{grid-template-columns:1fr}.game-card{padding:24px 20px}.ans kbd{display:none}}
 
 /* ---------- filmes ---------- */
 .films{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:90px}

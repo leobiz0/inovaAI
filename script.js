@@ -226,52 +226,6 @@ function initVision(){
   show(0);
 }
 
-/* ---------- jogo ---------- */
-var Q=[
- ["A Netflix sugere uma série parecida com as que você assistiu.",1,"Sistemas de recomendação aprendem com o histórico de milhões de pessoas para prever do que você vai gostar."],
- ["A calculadora do celular mostra que 128 × 4 = 512.",0,"É uma operação matemática com regra fixa. A calculadora não aprende nada com os seus cálculos."],
- ["O celular desbloqueia ao reconhecer o seu rosto.",1,"É visão computacional: o modelo aprendeu a identificar os traços do seu rosto mesmo com luz ou ângulo diferentes."],
- ["O despertador toca todo dia às 6h30.",0,"Ele só segue um horário programado. Nenhum padrão é aprendido."],
- ["Um app traduz uma placa em japonês apontando a câmera para ela.",1,"Junta visão computacional (ler o texto) e processamento de linguagem natural (traduzir)."],
- ["O semáforo da esquina troca de cor a cada 40 segundos.",0,"Tempo fixo é uma regra simples. Já semáforos que se ajustam ao fluxo de carros podem usar IA."],
- ["O e-mail manda uma mensagem suspeita direto para a caixa de spam.",1,"Filtros de spam são um exemplo clássico de machine learning: aprendem com milhões de mensagens marcadas."],
- ["Você pede “toca uma música animada” e o assistente de voz obedece.",1,"Reconhecer a fala e entender o pedido usa redes neurais treinadas com muitas horas de áudio."],
- ["O elevador para no 5º andar porque você apertou o botão 5.",0,"Botão apertado, andar escolhido: é uma regra direta, sem aprendizado."],
- ["O app de mapas avisa que vai ter trânsito e sugere outro caminho.",1,"Ele aprende com dados de trânsito de muitos usuários para prever como as ruas vão estar."]
-];
-var G={order:[],i:0,score:0,res:[],answered:false};
-function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-function newGame(){G.order=shuffle(Q.map(function(_,i){return i}));G.i=0;G.score=0;G.res=[];G.answered=false;drawQ()}
-function dots(){return '<div class="dots" aria-hidden="true">'+G.order.map(function(_,k){return '<i class="'+(k<G.res.length?(G.res[k]?'ok':'no'):(k===G.i?'now':''))+'"></i>'}).join("")+'</div>'}
-function drawQ(){
-  var q=Q[G.order[G.i]];
-  $("#game").innerHTML='<div class="game-top"><span>Situação '+(G.i+1)+' de '+Q.length+'</span>'+dots()+'<span>Acertos: <b>'+G.score+'</b></span></div>'+
-   '<span class="mono hl scenario-tag">Situação</span><p class="scenario">'+q[0]+'</p>'+
-   '<div class="answers"><button type="button" class="ans" data-a="1">Usa IA <kbd>1</kbd></button><button type="button" class="ans" data-a="0">Não usa IA <kbd>2</kbd></button></div><div id="gx"></div>';
-  $$(".ans").forEach(function(b){b.addEventListener("click",function(){answer(+b.dataset.a)})});
-  G.answered=false;
-}
-function answer(a){
-  if(G.answered)return;G.answered=true;
-  var q=Q[G.order[G.i]],ok=a===q[1];if(ok)G.score++;G.res.push(ok);
-  $$(".ans").forEach(function(b){b.disabled=true;if(+b.dataset.a===q[1])b.classList.add("right");else if(+b.dataset.a===a)b.classList.add("wrong")});
-  $("#gx").innerHTML='<div class="explain"><b class="'+(ok?'ok':'no')+'">'+(ok?'Acertou!':'Quase!')+' '+(q[1]?'Usa IA.':'Não usa IA.')+'</b>'+q[2]+'</div><div class="game-foot"><button type="button" class="btn btn-primary" id="nextQ">'+(G.i<Q.length-1?'Próxima situação':'Ver resultado')+' →</button></div>';
-  $(".game-top b").textContent=G.score;$(".dots").outerHTML=dots();
-  $("#nextQ").focus({preventScroll:true});
-  $("#nextQ").addEventListener("click",function(){G.i++;if(G.i<Q.length)drawQ();else result()});
-}
-function result(){
-  var best=Math.max(store.get("inovaai-best",0),G.score);store.set("inovaai-best",best);
-  var t=G.score>=9?["Especialista em IA","Você separa muito bem o que é aprendizado de máquina do que é só automação."]:G.score>=6?["Explorador de IA","Mandou bem! Revise os casos que errou para fechar a trilha."]:["Aprendiz de IA","Bom começo. A trilha “O que é IA?” vai te ajudar a acertar mais na próxima."];
-  $("#game").innerHTML='<div class="result"><span class="mono hl">Resultado</span><div class="big">'+G.score+'/'+Q.length+'</div><h2>'+t[0]+'</h2><p>'+t[1]+'</p><p>Seu recorde neste navegador: <b>'+best+'/'+Q.length+'</b></p>'+
-   '<div class="ctas"><button type="button" class="btn btn-primary" id="again">Jogar de novo</button><a class="btn btn-ghost" href="#ia">Revisar os assuntos</a></div>'+
-   '<div class="review">'+G.order.map(function(qi,k){return '<div><span class="'+(G.res[k]?'ok':'no')+'">'+(G.res[k]?'✓':'✗')+'</span><span>'+Q[qi][0]+' <b>'+(Q[qi][1]?'Usa IA':'Não usa IA')+'</b></span></div>'}).join("")+'</div></div>';
-  $("#again").addEventListener("click",newGame);
-}
-document.addEventListener("keydown",function(e){
-  if($('[data-page="jogo"]').hidden||$("#panelQuiz").hidden||e.target.matches("input,textarea"))return;
-  if(!G.answered&&(e.key==="1"||e.key==="2")&&$(".ans")){answer(e.key==="1"?1:0)}
-});
 
 /* ---------- filmes ---------- */
 var F=[
@@ -412,7 +366,7 @@ var KB=[
  ["saudacao",["oi","olá","ola nova","bom dia","boa tarde","boa noite","e aí","eae","opa","hey","salve","tudo bem","oi tudo bem"],
   "Oi! Eu sou a **Nova**. Pode me perguntar sobre inteligência artificial, machine learning, redes neurais ou sobre o próprio site.",null,["O que é IA?","Como você funciona?"]],
  ["despedida",["tchau","até mais","falou","flw","até logo","vou indo","adeus","até a próxima"],
-  "Até mais! Se quiser testar o que aprendeu, o jogo **É IA ou não é?** está te esperando.","jogo"],
+  "Até mais! Se quiser testar o que aprendeu, os jogos **Inova Runner** e **Central de Comando** estão te esperando.","jogo"],
  ["agradecimento",["obrigado","obrigada","valeu","vlw","muito obrigado","brigado","agradeço","show valeu"],
   "De nada! Se tiver mais alguma dúvida sobre IA, é só perguntar."],
  ["elogio",["você é legal","gostei de você","muito bom","incrível","você é inteligente","adorei","que top","mandou bem"],
@@ -436,7 +390,7 @@ var KB=[
  ["ia_forte",["o que é ia forte","ia fraca","diferença entre ia forte e fraca","ia geral","agi","superinteligência","ia que pensa como humano"],
   "**IA fraca** (ou estreita) é feita para uma tarefa específica, como reconhecer rostos ou traduzir textos; é a IA que existe hoje. **IA forte** seria uma IA capaz de raciocinar, planejar e resolver problemas de forma geral, como um humano. Segundo a IBM, ela ainda é teórica.","definicao"],
  ["cotidiano",["exemplos de ia no dia a dia","onde a ia está","ia no cotidiano","onde eu uso ia","ia no celular","exemplos de inteligência artificial","onde encontro ia","ia na minha vida"],
-  "A IA já está em muita coisa que você usa:\n- Recomendações da Netflix, do YouTube e do Spotify\n- Desbloqueio do celular pelo rosto\n- Tradutores automáticos\n- Assistentes de voz\n- Filtros de spam do e-mail\n- Apps de mapa que preveem o trânsito\nQuer treinar isso? Teste o jogo **É IA ou não é?**","jogo"],
+  "A IA já está em muita coisa que você usa:\n- Recomendações da Netflix, do YouTube e do Spotify\n- Desbloqueio do celular pelo rosto\n- Tradutores automáticos\n- Assistentes de voz\n- Filtros de spam do e-mail\n- Apps de mapa que preveem o trânsito\nQuer colocar isso em prática? Jogue a **Central de Comando** na página Jogo.","jogo"],
  ["beneficios",["benefícios da ia","vantagens da ia","pontos positivos da ia","para que serve a ia","ia ajuda em que","por que a ia é importante","lado bom da ia"],
   "A IA torna tarefas mais rápidas e precisas: ajuda médicos em diagnósticos, personaliza o ensino, evita falhas em máquinas na indústria e aumenta a segurança no trânsito. Veja exemplos na página **Aplicações**.","aplicacoes"],
  ["desafios",["riscos da ia","perigos da ia","desvantagens da ia","pontos negativos da ia","ética na ia","problemas da ia","ia é perigosa","lado ruim da ia","viés da ia","preconceito em ia"],
@@ -492,7 +446,7 @@ var KB=[
  ["ensine_info",["o que é ensine a ia","como funciona o ensine a máquina","quero ensinar a máquina","posso treinar uma ia","como treino uma ia no site","laboratório de desenho","o que é knn","k vizinhos mais próximos","k-nn","matriz de confusão","o que é validação"],
   "Na página **Ensine a IA** você desenha formas e treina um modelo de verdade, ali mesmo no navegador. Ele usa o algoritmo **k vizinhos mais próximos (k-NN)**: transforma o desenho em 256 números e compara com os exemplos que você ensinou. Dá até para avaliar o modelo com uma **matriz de confusão**.","ensine",["O que é viés da IA?"]],
  ["jogo_info",["como funciona o jogo","qual é o jogo","tem jogo no site","quero jogar","o que é o inova runner","como jogar o inova runner","como funciona a corrida","o que é o jogo é ia ou não é","quais são os controles do jogo"],
-  "A página **Jogo** tem dois jogos:\n- **Inova Runner:** corra 600 metros com o BIN ou o Marcio. ↑ pula, ↓ agacha e → acelera. Bateu num obstáculo? Responda uma pergunta sobre IA. Você tem 3 vidas.\n- **É IA ou não é?:** 10 situações do dia a dia para decidir se usam IA.","jogo"],
+  "A página **Jogo** tem dois jogos:\n- **Inova Runner:** corra 600 metros com o BIN ou o Marcio. ↑ pula, ↓ agacha e → acelera. Bateu num obstáculo? Responda uma pergunta sobre IA. Você tem 3 vidas.\n- **Central de Comando:** jogo 3D em primeira pessoa. Ande pela sala com W A S D, olhe com o mouse e resolva 4 incidentes: alucinação, viés, privacidade e deepfake.","jogo"],
  ["piada",["conta uma piada","me faz rir","piada de ia","fala algo engraçado","piada de programador"],
   "Por que a rede neural foi ao psicólogo? Porque tinha muitas **camadas ocultas**. 😄"],
  ["desconhecido_pessoal",["qual sua idade","onde você mora","você namora","qual sua cor favorita","você come","você dorme"],
@@ -1032,17 +986,22 @@ var Runner=(function(){
     return {start:start,stop:stop}})($id("rnConfetti"));
 
   /* abas */
-  function tab(which){var r=which!=="quiz";$id("tabRunner").setAttribute("aria-selected",r);$id("tabQuiz").setAttribute("aria-selected",!r);$id("panelRunner").hidden=!r;$id("panelQuiz").hidden=r;
-    if(!r&&state==="running")pause();if(!r&&!G.order.length)newGame();store.set("inovaai-gametab",r?"runner":"quiz")}
-  $id("tabRunner").addEventListener("click",function(){tab("runner")});$id("tabQuiz").addEventListener("click",function(){tab("quiz")});
-  [$id("tabRunner"),$id("tabQuiz")].forEach(function(b){b.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var o=b.id==="tabRunner"?$id("tabQuiz"):$id("tabRunner");o.focus();o.click()}})});
+  var TABS={runner:["tabRunner","panelRunner"],central:["tabCentral","panelCentral"]},TAB_ORDER=["runner","central"],central=null;
+  function pauseCentral(){if(central&&central._game.isActive())central._game.showPause()}
+  function tab(which){if(!TABS[which])which="runner";
+    TAB_ORDER.forEach(function(k){var on=k===which;$id(TABS[k][0]).setAttribute("aria-selected",on);$id(TABS[k][1]).hidden=!on});
+    if(which!=="runner"&&state==="running")pause();if(which!=="central")pauseCentral();
+    if(which==="central"&&!central)central=CentralIA.mount("#jogoCentral");
+    store.set("inovaai-gametab",which)}
+  TAB_ORDER.forEach(function(k,i){var b=$id(TABS[k][0]);b.addEventListener("click",function(){tab(k)});
+    b.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var n=TAB_ORDER[(i+(e.key==="ArrowRight"?1:TAB_ORDER.length-1))%TAB_ORDER.length];$id(TABS[n][0]).focus();tab(n)}})});
 
   /* tela estreita: câmera mais próxima, personagens maiores */
   function fit(){var w=$id("rnArena").clientWidth;if(!w)return;var nw=w<720?640:1100;if(nw!==CFG.width){CFG.width=nw;cv.width=nw}}
   window.addEventListener("resize",fit);
   showBest();
   requestAnimationFrame(tick);
-  return {leave:function(){if(state==="running")pause()},tab:tab,initTab:function(){tab(store.get("inovaai-gametab","runner"))}};
+  return {leave:function(){if(state==="running")pause();pauseCentral()},tab:tab,initTab:function(){tab(store.get("inovaai-gametab","runner"))}};
 })();
 
 /* ---------- início ---------- */
